@@ -30,7 +30,7 @@ First thing you need to set up is placing something like this either in initiali
 
 ```ruby
 EmailDetected.config do |config|
-  config.verifier_email = "quannguyen@bestcoder.info"
+  config.verifier_email = "youremail@email.com"
 end
 ```
 
