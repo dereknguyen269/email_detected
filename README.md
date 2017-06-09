@@ -1,8 +1,8 @@
-# EmailDetected
+# Email Detected
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/email_detected`. To experiment with that code, run `bin/console` for an interactive prompt.
+Email Detected is a simple tool for verifying an email address exists. It's free and quite easy to use :smile: .
 
-TODO: Delete this and the text above, and describe your gem
+Many times as developers we were putting validation statements for checking email addresses format. This gem will complete your existing setups with validator that actually connects with a given mail server and asks if the address in question exists for real.
 
 ## Installation
 
@@ -22,7 +22,38 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To get info about realness of given email address, email_detected connects with a mail server that email's domain points to and pretends to send an email. Some smtp servers will not allow you to do this if you will not present yourself as a real user.
+
+This only needs to be something the receiving SMTP server. We aren't actually sending any mail.
+
+First thing you need to set up is placing something like this either in initializer or in application.rb file:
+
+```ruby
+EmailDetected.config do |config|
+  config.verifier_email = "quannguyen@bestcoder.info"
+end
+```
+
+Then just put this in your model e. g:
+
+```ruby
+validates_exist_email_of :email
+```
+Or - if you'd like to use it outside of your models:
+
+```ruby
+EmailDetected.exist?(youremail)
+```
+
+This method will return with status `true || false` and `message` look like:
+```
+{:status=>true, :message=>"The email address has already been registered."} 
+```
+
+```
+{:status=>false, :message=>"The email address invalid."} 
+```
+or will throw an exception with nicely detailed info about what's wrong.
 
 ## Development
 
