@@ -10,7 +10,7 @@ module EmailDetected
 
   def self.exist?(email)
     return true if config.test_mode
-    return { status: false, errors: ['The email address invalid.'] } unless email.match VALID_EMAIL_REGEX
+    return { status: false, message: 'The email address invalid.' } unless email.match VALID_EMAIL_REGEX
     email_detected = EmailDetected::Checker.run(email)
     if email_detected.invalid?
       resp = { status: false, message: email_detected.errors.first }
