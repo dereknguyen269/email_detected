@@ -1,5 +1,6 @@
 # Email Detected
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5445a5fe4bca464c8f2b055e09e2fd73)](https://www.codacy.com/app/quanmn.libra/email_detected_2?utm_source=github.com&utm_medium=referral&utm_content=minhquan4080/email_detected&utm_campaign=badger)
 [![CircleCI](https://circleci.com/gh/minhquan4080/email_detected/tree/master.svg?style=svg)](https://circleci.com/gh/minhquan4080/email_detected/tree/master)
 
 Email Detected is a simple tool for verifying an email address exists. It's free and quite easy to use :smile: .
