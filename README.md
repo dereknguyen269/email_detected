@@ -1,5 +1,7 @@
 # Email Detected
 
+[![CircleCI](https://circleci.com/gh/minhquan4080/email_detected/tree/master.svg?style=svg)](https://circleci.com/gh/minhquan4080/email_detected/tree/master)
+
 Email Detected is a simple tool for verifying an email address exists. It's free and quite easy to use :smile: .
 
 Many times as developers we were putting validation statements for checking email addresses format. This gem will complete your existing setups with validator that actually connects with a given mail server and asks if the address in question exists for real.
