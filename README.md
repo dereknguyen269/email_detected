@@ -1,7 +1,7 @@
 # Email Detected
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5445a5fe4bca464c8f2b055e09e2fd73)](https://www.codacy.com/app/quanmn.libra/email_detected_2?utm_source=github.com&utm_medium=referral&utm_content=minhquan4080/email_detected&utm_campaign=badger)
-[![CircleCI](https://circleci.com/gh/minhquan4080/email_detected/tree/master.svg?style=svg)](https://circleci.com/gh/minhquan4080/email_detected/tree/master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5445a5fe4bca464c8f2b055e09e2fd73)](https://www.codacy.com/app/quanmn.libra/email_detected_2?utm_source=github.com&utm_medium=referral&utm_content=dereknguyen269/email_detected&utm_campaign=badger)
+[![CircleCI](https://circleci.com/gh/dereknguyen269/email_detected/tree/master.svg?style=svg)](https://circleci.com/gh/dereknguyen269/email_detected/tree/master)
 
 Email Detected is a simple tool for verifying an email address exists. It's free and quite easy to use :smile: .
 
@@ -36,6 +36,7 @@ EmailDetected.config do |config|
   config.verifier_email = "youremail@email.com"
 end
 ```
+Note: `verifier_email` must be **real**.
 
 Then just put this in your model e. g:
 
