@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if defined?(ActiveSupport)
   ActiveSupport.on_load(:active_record) do
     module EmailDetected
@@ -9,16 +11,17 @@ if defined?(ActiveSupport)
             def validate_each(record, attribute, value)
               begin
                 m = Mail::Address.new(value)
-                r = m.domain!=nil && m.domain.match('\.') && m.address == value
+                r = !m.domain.nil? && m.domain.match('\.') && m.address == value
                 r = EmailDetected.exist? m.address
                 r = r[:status]
-              rescue
+              rescue StandardError
                 r = false
               end
-              record.errors[attribute] << (options[:message] || "does not exist") unless r
+              unless r
+                record.errors[attribute] << (options[:message] || 'does not exist')
+              end
             end
           end
-
         end
 
         module ClassMethods
@@ -26,11 +29,10 @@ if defined?(ActiveSupport)
             validates_with ActiveRecord::Base::EmailExistValidator, _merge_attributes(attr_names)
           end
         end
-
       end
     end
 
-    ActiveRecord::Base.send(:include, EmailDetected::ValidatesExistEmail::Validator)
-    ActiveRecord::Base.send(:extend,  EmailDetected::ValidatesExistEmail::ClassMethods)
+    ActiveRecord::Base.include EmailDetected::ValidatesExistEmail::Validator
+    ActiveRecord::Base.extend EmailDetected::ValidatesExistEmail::ClassMethods
   end
 end
