@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EmailDetected
   module Config
     class << self
@@ -7,13 +9,13 @@ module EmailDetected
       def reset
         # This only needs to be something the receiving SMTP server
         # accepts.  We aren't actually sending any mail.
-        @verifier_email = ENV['EMAIL_DETECTED'] || "nobody@nonexistant.com"
+        @verifier_email = ENV['SENDER_EMAIL_DETECTED'] || 'nobody@nonexistant.com'
         @test_mode = false
-        if defined?(Rails) and defined?(Rails.env) and Rails.env.test?
+        if defined?(Rails) && defined?(Rails.env) && Rails.env.test?
           @test_mode = true
         end
       end
     end
-    self.reset
+    reset
   end
 end

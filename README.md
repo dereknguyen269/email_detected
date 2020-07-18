@@ -33,9 +33,16 @@ First thing you need to set up is placing something like this either in initiali
 
 ```ruby
 EmailDetected.config do |config|
-  config.verifier_email = "youremail@email.com"
+  config.verifier_email = ENV['SENDER_EMAIL_DETECTED']
 end
 ```
+
+Then, adding your **env** config with:
+
+```bash
+SENDER_EMAIL_DETECTED=your-real-email-config
+```
+
 Note: `verifier_email` must be **real**.
 
 Then just put this in your model e. g:
@@ -43,6 +50,7 @@ Then just put this in your model e. g:
 ```ruby
 validates_exist_email_of :email
 ```
+
 Or - if you'd like to use it outside of your models:
 
 ```ruby
@@ -50,13 +58,15 @@ EmailDetected.exist?(youremail)
 ```
 
 This method will return with status `true || false` and `message` look like:
+
 ```
-{:status=>true, :message=>"The email address has already been registered."} 
+{:status=>true, :message=>"The email address has already been registered."}
 ```
 
 ```
-{:status=>false, :message=>"The email address invalid."} 
+{:status=>false, :message=>"The email address invalid."}
 ```
+
 or will throw an exception with nicely detailed info about what's wrong.
 
 ## Development

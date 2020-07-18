@@ -14,15 +14,21 @@ RSpec.describe EmailDetected do
   end
 
   it 'with an real email address' do
-    expect(EmailDetected.exist?('quannguyen.citynow.test@gmail.com')).to match(
+    expect(EmailDetected.exist?('ads-account-noreply@google.com')).to match(
       status: true,
       message: 'The email address has already been registered.'
     )
   end
 
   context 'without an real email address' do
-    it 'do not exist email user' do
-      expect(EmailDetected.exist?('email.detected.test.fake@gmail.com')).to match(
+    it 'do not exist email user 1' do
+      expect(EmailDetected.exist?('email1.detected.test.fake@gmail.com')).to match(
+        status: false,
+        message: 'Requested action not taken:, mailbox unavailable'
+      )
+    end
+    it 'do not exist email user 2' do
+      expect(EmailDetected.exist?('email2.detected.test.fake@gmail.com')).to match(
         status: false,
         message: 'Requested action not taken:, mailbox unavailable'
       )
